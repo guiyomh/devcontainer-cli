@@ -63,6 +63,10 @@ export type FeatureOption = {
 	proposals?: string[];
 	default?: string;
 	description?: string;
+} | {
+	type: 'array';
+	default?: string[];
+	description?: string;
 };
 export interface Mount {
 	type: 'bind' | 'volume';
@@ -1125,5 +1129,5 @@ function getFeatureValueDefaults(feature: Feature) {
 				defaults[key] = options[key].default;
 			}
 			return defaults;
-		}, {} as Record<string, string | boolean | undefined>);
+		}, {} as Record<string, string | string[] | boolean | undefined>);
 }
